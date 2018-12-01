@@ -13,11 +13,13 @@ import {AuthGuard} from "./security/auth.guard";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
-
+import { UserAddressComponent } from './components/adminComponent/addressModule/user-address/user-address.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { NgSelectModule } from '@ng-select/ng-select';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'userAddressDetail', component: UserAddressComponent}
 
 ];
 
@@ -52,7 +54,8 @@ export class XhrInterceptor implements HttpInterceptor {
     HeaderComponent,
     SideNavComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,8 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
+    NgSelectModule,
+    NgxLoadingModule.forRoot({}),
     RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule],

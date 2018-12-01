@@ -1,6 +1,11 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {AuthService} from './service/auth.service';
+import {CommonService} from "./service/common.service";
 
+const PrimaryWhite = '#ffffff';
+const SecondaryGrey = '#ccc';
+const PrimaryRed = '#dd0031';
+const SecondaryBlue = '#006ddd';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +15,9 @@ import {AuthService} from './service/auth.service';
 export class AppComponent {
   title = 'iskconErpClient';
   role: string;
-  constructor(public auth: AuthService, private cd: ChangeDetectorRef) {
+
+
+  constructor(public auth: AuthService, private cd: ChangeDetectorRef, private commonService: CommonService) {
     this.role = localStorage.getItem('role');
     this.cd.markForCheck();
     setInterval(() => {
