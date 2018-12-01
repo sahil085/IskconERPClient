@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {CommonService} from '../../../../service/common.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 declare var $: any;
+import Swal from 'sweetalert2';
+import {Country} from '../../../../model/country';
+import {State} from '../../../../model/state';
+import {City} from '../../../../model/city';
+import {UserAddressService} from '../../../../service/user-address.service';
 
 @Component({
   selector: 'app-user-address',
@@ -9,9 +15,92 @@ declare var $: any;
 })
 export class UserAddressComponent implements OnInit {
 
-  constructor(private commonService: CommonService) { }
+  private countryList: Country[];
+  private stateList: State[];
+  private cityList: City[];
+  private name: string;
+  private permanentAddress: string;
+  private currentAddress: string;
+  private mobileNumber: number;
+  private countryId: number;
+  private stateId: number;
+  private cityId: number;
+  private isSubmitted = false;
+  private userInfoForm: FormGroup;
+
+  constructor(private commonService: CommonService, private fb: FormBuilder,
+              private userAddressService: UserAddressService) { }
 
   ngOnInit() {
+    this.userInfoForm = this.fb.group({
+      name: [this.name, Validators.required],
+      mobileNumber: [this.mobileNumber, Validators.required],
+      permanentAddress: [this.permanentAddress, Validators.required],
+      currentAddress: [this.currentAddress],
+      stateId: [this.stateId, Validators.required],
+      countryId: [this.countryId, Validators.required],
+      cityId: [this.cityId, Validators.required]
+    });
+
+    this.fetchAllCountries();
+  }
+
+  showToaster(message, type) {
+    Swal({
+      title: message,
+      type: type,
+      timer: 2000
+    });
+
+    // if (type === 'success') {
+    //   this.redirectToHome();
+    // }
+  }
+
+  fetchAllCountries() {
+    this.userAddressService.fetchAllCountry().subscribe(
+      (data) => {
+        this.countryList = data;
+      },
+      (err) => {
+        alert(err['error'].message ? err['error'].message : err['error'].text);
+      }
+    );
+  }
+
+  fetchStateByCountry(countryId) {
+
+    this.userAddressService.fetchAllStateByCountry(countryId).subscribe(
+      (data) => {
+        this.stateList = [];
+        this.stateList = data;
+      },
+      (err) => {
+        alert(err['error'].message ? err['error'].message : err['error'].text);
+      }
+    );
+  }
+
+  fetchCityByState(stateId) {
+    this.userAddressService.fetchAllCityByState(stateId).subscribe(
+      (data) => {
+        this.cityList = data;
+      },
+      (err) => {
+        alert(err['error'].message ? err['error'].message : err['error'].text);
+      }
+    );
+  }
+  createUser() {
+    this.isSubmitted = true;
+
+    if(this.userInfoForm.valid) {
+      this.userAddressService.createUser(this.userInfoForm.value).subscribe(
+        (data) => this.showToaster(data['message'], data['type']),
+        (err)  => this.showToaster(err['error'].message ? err['error'].message : err['error'].text, 'error')
+      );
+    }
+
   }
 
 }

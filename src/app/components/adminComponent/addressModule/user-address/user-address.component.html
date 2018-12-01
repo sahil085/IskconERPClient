@@ -1,7 +1,54 @@
+<div class="row" >
+  <div class="col-md-11">
+    <div class="ibox-content ">
+      <div class="row">
+        <div class="col-sm-12"><h3 class="m-t-none m-b">User Registration</h3>
+          <form role="form" [formGroup]="userInfoForm" class="example-container">
+            <div class="form-group"><label>Name</label> <input type="text" class="form-control" required formControlName="name"></div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.name.errors">
+              <div *ngIf="userInfoForm.controls.name.errors.required">Name is required</div>
+            </div>
+            <div class="form-group"><label>Mobile Number</label> <input  type="number"  maxlength="10"  class="form-control" required formControlName="mobileNumber"></div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.mobileNumber.errors">
+              <div *ngIf="userInfoForm.controls.mobileNumber.errors.required">Mobile Number is required</div>
+            </div>
+            <div class="form-group"><label>Country</label>
+              <ng-select  formControlName="countryId" (change)="fetchStateByCountry($event)" >
+                <ng-option *ngFor="let country of countryList"  value="{{country.id}}">{{country.name}}</ng-option>
+              </ng-select>
+            </div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.countryId.errors">
+              <div *ngIf="userInfoForm.controls.countryId.errors.required">Country is required</div>
+            </div>
+            <div class="form-group"><label>State</label>
+              <ng-select [virtualScroll]="true" formControlName="stateId" (change)="fetchCityByState($event)" >
+                <ng-option *ngFor="let state of stateList"  value="{{state.id}}">{{state.name}}</ng-option>
+              </ng-select>
+            </div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.stateId.errors">
+              <div *ngIf="userInfoForm.controls.stateId.errors.required">State is required</div>
+            </div>
+            <div class="form-group"><label>City</label>
+              <ng-select  formControlName="cityId" >
+                <ng-option *ngFor="let city of cityList"  value="{{city.id}}">{{city.name}}</ng-option>
+              </ng-select>
+            </div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.cityId.errors">
+              <div *ngIf="userInfoForm.controls.cityId.errors.required">City is required</div>
+            </div>
+            <div class="form-group"><label>Permanent Address</label> <input type="text" placeholder="Enter name" class="form-control" required formControlName="permanentAddress"></div>
+            <div class="badge-danger" *ngIf="isSubmitted && userInfoForm.controls.permanentAddress.errors">
+              <div *ngIf="userInfoForm.controls.permanentAddress.errors.required">Permanent Address is required</div>
+            </div>
+            <div class="form-group"><label>Current Address</label>
+              <input type="text" placeholder="Enter name" class="form-control" required formControlName="currentAddress"></div>
+            <div>
+              <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" (click)="createUser()"><strong>create</strong></button>
+            </div>
+          </form>
+        </div>
 
-<ng-select class="col-md-10">
-  <ng-option value=""></ng-option>
-  <ng-option>This is fun</ng-option>
-  <ng-option>I like Chosen so much</ng-option>
-  <ng-option>I also like bunny rabbits</ng-option>
-</ng-select>
+      </div>
+    </div>
+  </div>
+</div>
