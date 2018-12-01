@@ -123,5 +123,12 @@
       }
     }
   },
-  "defaultProject": "iskconErpClient"
+  "defaultProject": "iskconErpClient",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }
