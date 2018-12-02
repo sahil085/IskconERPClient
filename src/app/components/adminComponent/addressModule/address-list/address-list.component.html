@@ -1,0 +1,42 @@
+<div class="row" *ngFor="let data of addressList">
+  <div class="col-lg-11" *ngIf="!isQuestionSetLoading" >
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h3><strong>Country :  </strong>{{data.countryVO.name}}
+          <span class="pull-right">
+            Total State : <span class="text-muted">{{data.countryVO.stateVOS.length}}</span>
+          </span>
+        </h3>
+        <div class="ibox-tools">
+          <a class="collapse-link" (click)="data.$$countryClicked = !data.$$countryClicked">
+            <i class="fa" [ngClass]="{'fa-chevron-up' : data.$$countryClicked, 'fa-chevron-down' : !data.$$countryClicked}"></i>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="data.$$countryClicked" >
+
+        <div class="ibox-content" *ngFor="let stateData of data.countryVO.stateVOS; index as i " >
+          <h3><strong>State :  </strong>{{stateData.name}}
+            <span class="pull-right">
+            Total City : <span class="text-muted">{{stateData.cityVOList.length}}</span>
+          </span>
+          </h3>
+          <div class="ibox-tools">
+            <a class="collapse-link" (click)="stateData.$$stateClicked = !stateData.$$stateClicked">
+              <i class="fa" [ngClass]="{'fa-chevron-up' : stateData.$$stateClicked, 'fa-chevron-down' : !stateData.$$stateClicked}"></i>
+            </a>
+          </div>
+          <div *ngIf="stateData.$$stateClicked" >
+
+            <div class="ibox-content" *ngFor="let cityData of stateData.cityVOList; index as i " >
+              <h3><strong>City :  </strong>{{cityData.name}}
+              </h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

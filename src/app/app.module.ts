@@ -9,17 +9,19 @@ import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpR
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
 import { HomeComponent } from './components/adminComponent/home/home.component';
-import {AuthGuard} from "./security/auth.guard";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthGuard} from './security/auth.guard';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserAddressComponent } from './components/adminComponent/addressModule/user-address/user-address.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AddressListComponent } from './components/adminComponent/addressModule/address-list/address-list.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'userAddressDetail', component: UserAddressComponent}
+  {path: 'userAddressDetail', component: UserAddressComponent},
+  {path: 'addressList', component: AddressListComponent}
 
 ];
 
@@ -55,7 +57,8 @@ export class XhrInterceptor implements HttpInterceptor {
     SideNavComponent,
     HomeComponent,
     LoginComponent,
-    UserAddressComponent
+    UserAddressComponent,
+    AddressListComponent
   ],
   imports: [
     BrowserModule,

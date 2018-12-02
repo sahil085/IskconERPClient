@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
 
-  public static showSpinner = false;
+  public showSpinner = false;
 
   constructor() { }
 }

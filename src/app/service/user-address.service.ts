@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/index';
 import {Country} from '../model/country';
 import {State} from '../model/state';
 import {City} from '../model/city';
+import {AddressList} from "../model/address-list";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class UserAddressService {
 
   fetchAllCityByState(stateId): Observable<City[]> {
     return this.http.get<City[]>(`${this.apiUrl}/city/findByState/${stateId}`);
+  }
+
+  fetchAddressList(): Observable<AddressList[]> {
+    return this.http.get<AddressList[]>(`${this.apiUrl}/address/list`);
   }
 
 }
