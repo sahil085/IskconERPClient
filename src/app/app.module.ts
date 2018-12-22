@@ -17,6 +17,7 @@ import { UserAddressComponent } from './components/adminComponent/addressModule/
 import { NgxLoadingModule } from 'ngx-loading';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddressListComponent } from './components/adminComponent/addressModule/address-list/address-list.component';
+import { UserInfoComponent } from './components/adminComponent/addressModule/user-info/user-info.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -58,7 +59,8 @@ export class XhrInterceptor implements HttpInterceptor {
     HomeComponent,
     LoginComponent,
     UserAddressComponent,
-    AddressListComponent
+    AddressListComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

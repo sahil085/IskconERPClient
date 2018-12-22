@@ -6,6 +6,7 @@ import {Country} from '../model/country';
 import {State} from '../model/state';
 import {City} from '../model/city';
 import {AddressList} from "../model/address-list";
+import {UserInfo} from "../model/user-info";
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,13 @@ export class UserAddressService {
   fetchAddressList(): Observable<AddressList[]> {
     return this.http.get<AddressList[]>(`${this.apiUrl}/address/list`);
   }
+
+  fetchAllUsers(): Observable<UserInfo[]>{
+    return this.http.get<UserInfo[]>(`${this.apiUrl}/userInfo/findAll`);
+  }
+
+  fetchAllUsersByFilter(userInfoCO): Observable<UserInfo[]> {
+    return this.http.get<UserInfo[]>(`${this.apiUrl}/userInfo/findAllByFilter`, userInfoCO);
+}
 
 }
