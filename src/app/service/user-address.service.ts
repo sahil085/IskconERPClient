@@ -37,12 +37,12 @@ export class UserAddressService {
     return this.http.get<AddressList[]>(`${this.apiUrl}/address/list`);
   }
 
-  fetchAllUsers(): Observable<UserInfo[]>{
+  fetchAllUsers(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>(`${this.apiUrl}/userInfo/findAll`);
   }
 
   fetchAllUsersByFilter(userInfoCO): Observable<UserInfo[]> {
-    return this.http.get<UserInfo[]>(`${this.apiUrl}/userInfo/findAllByFilter`, userInfoCO);
+    return this.http.get<UserInfo[]>(`${this.apiUrl}/userInfo/findAllByFilter`);
 }
 
 }
