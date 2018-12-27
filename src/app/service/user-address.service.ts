@@ -15,7 +15,7 @@ export class UserAddressService {
 
   apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   createUser(userDetail) {
     return this.http.post(`${this.apiUrl}/userInfo/createUser`, userDetail);

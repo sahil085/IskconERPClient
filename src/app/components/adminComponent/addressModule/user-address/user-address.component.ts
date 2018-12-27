@@ -15,21 +15,21 @@ import {UserAddressService} from '../../../../service/user-address.service';
 })
 export class UserAddressComponent implements OnInit {
 
-  private countryList: Country[];
-  private stateList: State[];
-  private cityList: City[];
-  private name: string;
-  private permanentAddress: string;
-  private currentAddress: string;
-  private mobileNumber: number;
-  private countryId: number;
-  private stateId: number;
-  private cityId: number;
-  private isSubmitted = false;
-  private userInfoForm: FormGroup;
+  public countryList: Country[];
+  public stateList: State[];
+  public cityList: City[];
+  public name: string;
+  public permanentAddress: string;
+  public currentAddress: string;
+  public mobileNumber: number;
+  public countryId: number;
+  public stateId: number;
+  public cityId: number;
+  public isSubmitted = false;
+  public userInfoForm: FormGroup;
 
-  constructor(private commonService: CommonService, private fb: FormBuilder,
-              private userAddressService: UserAddressService) { }
+  constructor(public commonService: CommonService, public fb: FormBuilder,
+              public userAddressService: UserAddressService) { }
 
   ngOnInit() {
     this.userInfoForm = this.fb.group({

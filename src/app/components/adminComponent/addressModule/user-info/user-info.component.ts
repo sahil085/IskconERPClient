@@ -14,12 +14,12 @@ import {City} from "../../../../model/city";
 })
 export class UserInfoComponent implements OnInit {
 
-  private userInfoList: UserInfo[];
-  private CountryList: Country[];
-  private stateList: State[];
-  private cityList: City[];
+  public userInfoList: UserInfo[];
+  public CountryList: Country[];
+  public stateList: State[];
+  public cityList: City[];
 
-  constructor(private userAddressService: UserAddressService,private commonService: CommonService) { }
+  constructor(public userAddressService: UserAddressService,public commonService: CommonService) { }
 
   ngOnInit() {
 

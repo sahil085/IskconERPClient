@@ -17,7 +17,7 @@ export class AppComponent {
   role: string;
 
 
-  constructor(public auth: AuthService, private cd: ChangeDetectorRef, private commonService: CommonService) {
+  constructor(public auth: AuthService, public cd: ChangeDetectorRef, public commonService: CommonService) {
     this.role = localStorage.getItem('role');
     this.cd.markForCheck();
     setInterval(() => {

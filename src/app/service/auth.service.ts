@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
-  constructor(private myRoute: Router) { }
+  constructor(public myRoute: Router) { }
 
   isAuthenticated() {
     return localStorage.getItem('isAuthenticated');

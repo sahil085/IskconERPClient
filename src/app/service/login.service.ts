@@ -8,7 +8,7 @@ export class LoginService {
 
   apiUrl: string = environment.apiUrl;
 
-  constructor(private http: Http) { }
+  constructor(public http: Http) { }
 
   public logIn(user) {
 

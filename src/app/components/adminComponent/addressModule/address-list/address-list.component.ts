@@ -12,9 +12,9 @@ declare var $: any;
 })
 export class AddressListComponent implements OnInit {
 
-  private addressList: AddressList[];
+  public addressList: AddressList[];
 
-  constructor(private userAddressService: UserAddressService, private commonService: CommonService) { }
+  constructor(public userAddressService: UserAddressService, public commonService: CommonService) { }
 
   ngOnInit() {
     this.commonService.showSpinner = true;
