@@ -1,5 +1,5 @@
 export const environment = {
-  apiUrl: 'http://api.iyfghaziabad.in',
+  apiUrl: 'https://iskcon-erp-api.herokuapp.com/',
   clientUrl: 'http://localhost:4200',
   production: true
 };
