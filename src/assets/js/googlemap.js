@@ -19,6 +19,7 @@ function showPosition(position) {
 //            "<br>Longitude: " + position.coords.longitude;
   clat=position.coords.latitude;
   clon=position.coords.longitude;
+
 }
 setInterval(function () {
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -177,7 +178,7 @@ setInterval(function () {
   //          }
   //          document.getElementById("distance").innerHTML="You Are "+dist+" Far From Rath yatra";
   //      }
-}, 30000);
+}, 10000);
 
 function hare() {
   alert("hare krishna");
