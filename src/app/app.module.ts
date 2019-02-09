@@ -18,11 +18,14 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddressListComponent } from './components/adminComponent/addressModule/address-list/address-list.component';
 import { UserInfoComponent } from './components/adminComponent/addressModule/user-info/user-info.component';
+import { AgmCoreModule } from '@agm/core';
+import { RathYatraLocationComponent } from './components/rath-yatra-location/rath-yatra-location.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'userAddressDetail', component: UserAddressComponent},
-  {path: 'addressList', component: AddressListComponent}
+  {path: 'addressList', component: AddressListComponent},
+  {path: 'rathYatra', component:RathYatraLocationComponent}
 
 ];
 
@@ -60,7 +63,8 @@ export class XhrInterceptor implements HttpInterceptor {
     LoginComponent,
     UserAddressComponent,
     AddressListComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    RathYatraLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,10 @@ export class XhrInterceptor implements HttpInterceptor {
     BrowserAnimationsModule,
     NgSelectModule,
     NgxLoadingModule.forRoot({}),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDbYVVlZjoCSDJo7c2sqPxgPomabDPI0G0'
+    })
   ],
   exports: [RouterModule],
   providers: [{

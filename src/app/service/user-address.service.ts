@@ -21,6 +21,7 @@ export class UserAddressService {
     return this.http.post(`${this.apiUrl}/userInfo/createUser`, userDetail);
   }
 
+
   fetchAllCountry(): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.apiUrl}/country/findAll`);
   }

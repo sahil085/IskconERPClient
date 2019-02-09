@@ -45,7 +45,9 @@
               "src/assets/js/demo/sparkline-demo.js",
               "src/assets/js/plugins/chartJs/Chart.min.js",
               "src/assets/js/plugins/nestable/jquery.nestable.js",
-              "src/assets/js/plugins/toastr/toastr.min.js"
+              "src/assets/js/plugins/toastr/toastr.min.js",
+              "src/assets/js/googlemap.js",
+              "src/assets/js/RathYatraLocation.js"
             ]
           },
           "configurations": {

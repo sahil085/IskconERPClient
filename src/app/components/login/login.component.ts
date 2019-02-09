@@ -29,10 +29,16 @@ export class LoginComponent implements OnInit {
     if (this.auth.isLoggednIn()) {
       this.router.navigate([this.returnUrl]);
     }
+
+    this.login();
   }
 
   login() {
-    this.isLoginSubmit = true
+    this.isLoginSubmit = true;
+    this.username = 'sahil.verma@tothenew.com';
+    this.password = 'igdefault';
+    this.loginForm.patchValue({'username': this.username});
+    this.loginForm.patchValue({'password': this.password});
     console.log(this.loginForm.value);
     if (!this.loginForm.invalid) {
       this.loginService.logIn(this.loginForm.value).subscribe(data => {

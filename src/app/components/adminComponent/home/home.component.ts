@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
+import {environment} from '../../../../environments/environment';
+
+declare function getLocation(url): any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  apiUrl: string = environment.apiUrl;
+
+  constructor(public http: HttpClient) { }
 
   ngOnInit() {
+    console.log(this.apiUrl);
+
+    getLocation(this.apiUrl);
+
   }
 
 }
