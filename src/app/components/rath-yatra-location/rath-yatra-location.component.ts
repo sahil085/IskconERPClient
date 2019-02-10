@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../environments/environment';
 
-declare function updateLocation(url,token): any;
+declare function updateLocation(url, token): any;
 
 @Component({
   selector: 'app-rath-yatra-location',
@@ -22,10 +22,9 @@ export class RathYatraLocationComponent implements OnInit {
   }
 
   updateLocation() {
-
     if (this.secretkey === 'gaurHari@123') {
-      let token = localStorage.getItem('Authorization');
-      updateLocation(this.apiUrl,token);
+      const token = localStorage.getItem('Authorization');
+      updateLocation(this.apiUrl, token);
     }
   }
 
