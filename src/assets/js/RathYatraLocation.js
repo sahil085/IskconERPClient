@@ -16,7 +16,6 @@ function showPosition(position) {
   clon=position.coords.longitude;
 
   $.ajax({url: URL+"/updateLocation/"+clat+'/'+clon,type:'put', headers: {"Authorization": 'Basic ' +Token}, success: function(result){
-      console.log(result);
       alert(result);
     }});
 }

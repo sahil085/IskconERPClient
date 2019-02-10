@@ -20,6 +20,7 @@ function showPosition(position) {
 //            "<br>Longitude: " + position.coords.longitude;
   clat=position.coords.latitude;
   clon=position.coords.longitude;
+
 }
 setInterval(function () {
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -35,7 +36,7 @@ setInterval(function () {
         $("#viewongoogle").empty();
         $("#yatraheader").empty();
         $("#yatraheader").text('Iskcon Ghaziabad Rath Yatra Live Tracking');
-        $('#viewongoogle').append('click Here To Get Direction <br><a target="_blank" href="https://maps.google.com/maps?q='+latt+','+long+'&hl=es;z=14&amp;/" >Get Directions</a>');
+        $('#viewongoogle').append('Click Here To Get Direction <br><a target="_blank" href="https://maps.google.com/maps?q='+latt+','+long+'&hl=es;z=14&amp;/" >Get Directions</a>');
         initialize(latt,long);
       }});
 
