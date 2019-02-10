@@ -11,6 +11,7 @@ function getLocation(Url) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
+    alert("Geolocation is not supported by this browser");
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
@@ -33,7 +34,7 @@ setInterval(function () {
         latt = result.substring(result.indexOf("^")+1,result.length)*1;
         $("#viewongoogle").empty();
         $("#yatraheader").empty();
-        $("#yatraheader").text('Iskcon Ghazibad Rath Yatra Live tracking');
+        $("#yatraheader").text('Iskcon Ghaziabad Rath Yatra Live Tracking');
         $('#viewongoogle').append('click Here To Get Direction <br><a target="_blank" href="https://maps.google.com/maps?q='+latt+','+long+'&hl=es;z=14&amp;/" >Get Directions</a>');
         initialize(latt,long);
       }});
@@ -44,7 +45,7 @@ setInterval(function () {
     var labelIndex = 0;
     var India = { lat:lat, lng:longi};
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 13,
+      zoom: 16,
       center: India
     });
     // This event listener calls addMarker() when the map is clicked.
@@ -118,30 +119,31 @@ setInterval(function () {
 //                    alert("Geocoder failed due to: " + status);
       }
     });
+    distance(latt,long,clat,clon);
   }
    google.maps.event.addDomListener(window, 'load', initialize);
-       // function distance(lat1,lon1,lat2,lon2) {
-       //     var R = 6371; // km (change this constant to get miles)
-       //     var dLat = (lat2-lat1) * Math.PI / 180;
-       //     var dLon = (lon2-lon1) * Math.PI / 180;
-       //     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-       //         Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
-       //         Math.sin(dLon/2) * Math.sin(dLon/2);
-       //     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-       //     var d = R * c;
-       //     if (d>1) {
-       //         document.getElementById("distance").innerHTML="You Are "+Math.round(d)+"km Far From Rath yatra";
-       //     }
-       //     else if (d<=1)
-       //     {
-       //         document.getElementById("distance").innerHTML="You Are "+Math.round(d*1000)+"m Far From Rath yatra";
-       //     }
-       //    else {
-       //         document. getElementById("distance").innerHTML="You Are "+d+"meter Far From Rath yatra";
-       //
-       //     }
-       //
-       // }
+       function distance(lat1,lon1,lat2,lon2) {
+           var R = 6371; // km (change this constant to get miles)
+           var dLat = (lat2-lat1) * Math.PI / 180;
+           var dLon = (lon2-lon1) * Math.PI / 180;
+           var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+               Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+               Math.sin(dLon/2) * Math.sin(dLon/2);
+           var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+           var d = R * c;
+           if (d>1) {
+               document.getElementById("distance").innerHTML="You Are "+Math.round(d)+"km Far From Rath yatra";
+           }
+           else if (d<=1)
+           {
+               document.getElementById("distance").innerHTML="You Are "+Math.round(d*1000)+"m Far From Rath yatra";
+           }
+          else {
+               document. getElementById("distance").innerHTML="You Are "+d+"meter Far From Rath yatra";
+
+           }
+
+       }
   //      function distance(lat1, lon1, lat2, lon2, unit) {
   //          var radlat1 = Math.PI * lat1 / 180
   //          var radlat2 = Math.PI * lat2 / 180
@@ -161,7 +163,3 @@ setInterval(function () {
   //          document.getElementById("distance").innerHTML="You Are "+dist+" Far From Rath yatra";
   //      }
 }, 10000);
-
-function hare() {
-  alert("hare krishna");
-}

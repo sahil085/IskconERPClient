@@ -39,10 +39,8 @@ export class LoginComponent implements OnInit {
     this.password = 'igdefault';
     this.loginForm.patchValue({'username': this.username});
     this.loginForm.patchValue({'password': this.password});
-    console.log(this.loginForm.value);
     if (!this.loginForm.invalid) {
       this.loginService.logIn(this.loginForm.value).subscribe(data => {
-
           // localStorage.setItem('currentUser', data.json().principal);
           const authorities = data.json().principal.authorities;
           localStorage.setItem('user', JSON.stringify(data.json().principal));

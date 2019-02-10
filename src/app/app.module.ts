@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'userAddressDetail', component: UserAddressComponent},
   {path: 'addressList', component: AddressListComponent},
-  {path: 'rathYatra', component:RathYatraLocationComponent}
+  {path: 'rathYatra', component: RathYatraLocationComponent}
 
 ];
 
