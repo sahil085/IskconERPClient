@@ -9,10 +9,13 @@ function updateLocation(Url,token) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(updateRathYatraLocation, error,{});
   } else {
+    alert('--- error in updateLocation' + `ERROR(${err.code}): ${err.message}`);
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 function error(err) {
+  alert('--- error in updateLocation -- '+ `ERROR(${err.code}): ${err.message}`);
+
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 

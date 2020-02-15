@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
@@ -18,12 +18,13 @@ export class LoginComponent implements OnInit {
   public isLoginSubmit = false;
 
   constructor(public loginService: LoginService, public fb: FormBuilder,
-              public router: Router, public route: ActivatedRoute, public auth: AuthService) { }
+              public router: Router, public route: ActivatedRoute, public auth: AuthService) {
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: [this.username , [Validators.required, Validators.email]],
-      password: [this.password , Validators.required]
+      username: [this.username, [Validators.required, Validators.email]],
+      password: [this.password, Validators.required]
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (this.auth.isLoggednIn()) {
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.login();
   }
 
-  login() {
+  async login() {
     this.isLoginSubmit = true;
     this.username = 'sahil.verma@tothenew.com';
     this.password = 'igdefault';
@@ -41,22 +42,25 @@ export class LoginComponent implements OnInit {
     this.loginForm.patchValue({'password': this.password});
     if (!this.loginForm.invalid) {
       this.loginService.logIn(this.loginForm.value).subscribe(data => {
-          // localStorage.setItem('currentUser', data.json().principal);
-          const authorities = data.json().principal.authorities;
-          localStorage.setItem('user', JSON.stringify(data.json().principal));
-          authorities.forEach(roles => {
-            localStorage.setItem('role', roles.authority);
+        // localStorage.setItem('currentUser', data.json().principal);
+        const authorities = data.json().principal.authorities;
+        localStorage.setItem('user', JSON.stringify(data.json().principal));
+        authorities.forEach(roles => {
+          localStorage.setItem('role', roles.authority);
 
-          });
-          localStorage.setItem('isAuthenticated', 'true');
-        window.location.href = this.returnUrl;
-        }, err => {
-          if (err.status === 401) {
-            this.invalidMessage = 'EmailId Or Password Is Incorrect';
-          }
-          // this.errorMessage="error :  Username or password is incorrect";
         });
-      }
+        localStorage.setItem('isAuthenticated', 'true');
+        setTimeout(() => {
+          window.location.href = this.returnUrl;
+
+        }, 100);
+      }, err => {
+        if (err.status === 401) {
+          this.invalidMessage = 'EmailId Or Password Is Incorrect';
+        }
+        // this.errorMessage="error :  Username or password is incorrect";
+      });
+    }
   }
 
 
