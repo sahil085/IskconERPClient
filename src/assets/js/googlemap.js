@@ -38,7 +38,7 @@ setTimeout(function () {
           $("#viewongoogle").empty();
           $("#yatraheader").empty();
           $("#yatraheader").text('Iskcon Ghaziabad Rath Yatra Live Tracking');
-          $('#viewongoogle').append('Click Here To Get Direction <br><a target="_blank" href="https://maps.google.com/maps?q='+latt+','+long+'&hl=es;z=14&amp;/" >Get Directions</a>');
+          $('#viewongoogle').append('<b>Click Here To Get Direction <br><a target="_blank" href="https://maps.google.com/maps?q='+latt+','+long+'&hl=es;z=14&amp;/" >Get Directions</a></b>');
           initialize(latt,long);
         }});
 
